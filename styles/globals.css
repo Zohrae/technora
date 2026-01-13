@@ -1,0 +1,150 @@
+/* ============================================
+   Replace / merge into your existing CSS file
+   (keeps all your variables and adds a few
+   small animation helpers used by the hero)
+   ============================================ */
+
+/* 1) Import Tailwind core (keep if used) */
+@import "tailwindcss";
+
+/* 2) Brand color theme (unchanged) */
+@theme {
+  --color-deep-red: #660000;
+  --color-blood-red: #dd0000;
+  --color-blood-red-light: #ff3f3c;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-bg-dark: #0a0a0a;
+  --color-text-light: #f7f7f7;
+}
+
+/* Body */
+body {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  font-feature-settings: "rlig" 1, "calt" 1;
+  scroll-behavior: smooth;
+}
+
+/* Headline gradient text using only brand reds */
+.text-gradient {
+  background: linear-gradient(
+    90deg,
+    var(--color-deep-red),
+    var(--color-blood-red),
+    var(--color-blood-red-light)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Animations (existing + small helpers) */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 900ms ease both;
+}
+
+.animate-slideUp {
+  animation: slideUp 700ms cubic-bezier(.2,.9,.2,1) both;
+}
+
+/* Backdrop blur utility */
+.backdrop-blur-glass {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Gradient border (uses brand reds) */
+.gradient-border {
+  position: relative;
+  border-radius: 9999px;
+  padding: 2px;
+  background: linear-gradient(90deg, var(--color-deep-red), var(--color-blood-red));
+  -webkit-mask-composite: exclude;
+}
+
+/* Slightly different named helper used in component */
+.gradient-border > span,
+.gradient-border > * {
+  display: inline-block;
+  background: var(--color-black);
+  border-radius: 9999px;
+  padding: 10px 22px;
+}
+
+/* Orbs with brand reds */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(64px);
+  opacity: 0.28;
+  animation: float 8s ease-in-out infinite;
+  pointer-events: none;
+}
+.orb-red-deep {
+  background: radial-gradient(circle, var(--color-deep-red), transparent 40%);
+}
+.orb-red-light {
+  background: radial-gradient(circle, var(--color-blood-red-light), transparent 40%);
+}
+
+/* Grid Pattern Background */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(221, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(221, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Keyframes */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-24px); }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 12px rgba(221, 0, 0, 0.18);
+  }
+  to {
+    box-shadow: 0 0 40px rgba(221, 0, 0, 0.45), 0 0 80px rgba(221, 0, 0, 0.25);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(14px) scale(0.995); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Scrollbar (keeps brand red) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-blood-red);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-deep-red);
+}
+
+/* Selection highlight */
+::selection {
+  background: rgba(221, 0, 0, 0.25);
+  color: var(--color-white);
+}
