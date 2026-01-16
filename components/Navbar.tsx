@@ -63,15 +63,27 @@ const Navbar = () => {
               <a
                 key={link.label}
                 href={link.href}
-                className="group relative text-sm font-semibold uppercase tracking-wider text-gray-800 transition-colors duration-300 hover:text-[#dd0000]"
+                className="
+                  group relative cursor-pointer
+                  text-sm font-semibold uppercase tracking-wider
+                  text-gray-800
+                  transition-all duration-300 ease-out
+                  hover:text-[#dd0000]
+                  hover:scale-105
+                "
               >
                 {link.label}
 
                 {/* underline */}
-                <span className="absolute -bottom-2 left-0 h-[2px] w-0 bg-gradient-to-r from-[#660000] to-[#dd0000] transition-all duration-300 group-hover:w-full" />
-
-                {/* glow dot */}
-                <span className="absolute -bottom-3 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-[#dd0000] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <span
+                  className="
+                    absolute -bottom-2 left-0
+                    h-[2px] w-0
+                    bg-gradient-to-r from-[#660000] to-[#dd0000]
+                    transition-all duration-300
+                    group-hover:w-full
+                  "
+                />
               </a>
             ))}
           </div>
@@ -99,7 +111,16 @@ const Navbar = () => {
                 key={link.label}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-wider text-gray-800 transition hover:bg-[#dd0000]/10 hover:text-[#dd0000]"
+                className="
+                  cursor-pointer
+                  rounded-xl px-4 py-3
+                  text-sm font-semibold uppercase tracking-wider
+                  text-gray-800
+                  transition-all duration-300
+                  hover:bg-[#dd0000]/10
+                  hover:text-[#dd0000]
+                  hover:scale-[1.03]
+                "
               >
                 {link.label}
               </a>
