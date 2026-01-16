@@ -4,9 +4,14 @@
 "use client";
 
 import React from "react";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowDown, Hand, Play } from "lucide-react";
 
 const Hero = () => {
+  const scrollToLaunch = () => {
+    const section = document.getElementById("launch");
+    section?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black text-white">
       
@@ -21,11 +26,11 @@ const Hero = () => {
       <div className="absolute inset-0 grid-pattern opacity-15"></div>
 
       <div className="relative max-w-6xl mx-auto px-6 py-28 text-center z-10">
-        
+
         {/* LAUNCH BADGE */}
-        <div className="inline-block mb-10 animate-float cursor-pointer">
+        <div className="inline-block mb-10 animate-float">
           <div
-            className="px-6 py-2 rounded-full backdrop-blur-glass border transition hover:scale-105"
+            className="px-6 py-2 rounded-full backdrop-blur-glass border"
             style={{
               borderColor: "rgba(221,0,0,0.25)",
               background: "rgba(0,0,0,0.35)",
@@ -41,7 +46,7 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* MAIN TITLE */}
+        {/* TITLE */}
         <h1 className="mb-8 leading-tight">
           <span className="block text-5xl md:text-7xl lg:text-8xl font-extrabold italic text-gradient animate-slideUp">
             Building the
@@ -54,44 +59,28 @@ const Hero = () => {
         {/* SUBTITLE */}
         <p className="text-base md:text-lg text-[var(--color-text-light)] max-w-2xl mx-auto mb-12 animate-fadeIn">
           TECHNORA is a youth-driven tech community helping students and young professionals
-          learn, connect, and confidently enter the tech world through events, mentorship,
-          and real conversations.
+          learn, connect, and confidently enter the tech world.
         </p>
 
-        {/* CTA BUTTONS */}
+        {/* CTA */}
         <div className="flex flex-col sm:flex-row gap-5 justify-center items-center mb-16">
-          
+
           <button
-            className="
-              cursor-pointer
-              flex items-center gap-3
-              px-9 py-4 rounded-full
-              font-bold text-lg
-              transition-all duration-300
-              hover:scale-110 hover:-translate-y-1
-              animate-glow
-            "
+            onClick={scrollToLaunch}
+            className="group flex items-center gap-3 px-9 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-110 animate-glow"
             style={{
               background: "linear-gradient(90deg, var(--color-deep-red), var(--color-blood-red))",
               boxShadow: "0 10px 35px rgba(221,0,0,0.2)",
             }}
           >
             <span>Join the Community</span>
-            <ArrowRight size={18} />
+            <span className="relative w-5 h-5">
+              <ArrowDown className="absolute inset-0 opacity-100 transition-opacity duration-300 group-hover:opacity-0" />
+              <Hand className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            </span>
           </button>
 
-          <button
-            className="
-              cursor-pointer
-              flex items-center gap-3
-              px-9 py-4 rounded-full
-              font-semibold text-lg
-              transition-all duration-300
-              hover:scale-105 hover:bg-white/5
-              gradient-border
-            "
-            style={{ background: "rgba(0,0,0,1)" }}
-          >
+          <button className="flex items-center gap-3 px-9 py-4 rounded-full font-semibold text-lg gradient-border">
             <Play size={18} />
             <span className="text-[var(--color-text-light)]">First Webinar</span>
           </button>
@@ -107,15 +96,7 @@ const Hero = () => {
           ].map((stat, idx) => (
             <div
               key={idx}
-              className="
-                cursor-pointer
-                group
-                rounded-2xl
-                px-6 py-6
-                transition-all duration-300
-                hover:scale-110 hover:-translate-y-1
-                hover:bg-white/5
-              "
+              className="group rounded-2xl px-6 py-6 transition-all duration-300 hover:scale-110 hover:bg-white/5"
             >
               <div className="text-3xl md:text-4xl font-black text-gradient mb-2">
                 {stat.value}
