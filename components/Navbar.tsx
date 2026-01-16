@@ -7,85 +7,107 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
+const links = [
+  { label: "Mission", href: "#mission" },
+  { label: "What We Do", href: "#whatwedo" },
+  { label: "Community", href: "#community" },
+  { label: "Launch", href: "#launch" },
+];
+
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 30);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white shadow-md border-b border-gray-200"
-          : "bg-white"
+    <header
+      className={`fixed top-0 z-50 w-full bg-white transition-all duration-500 ${
+        scrolled ? "shadow-lg border-b border-black/5" : ""
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-20 items-center justify-between">
-          
+      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div
+          className={`flex items-center justify-between transition-all duration-300 ${
+            scrolled ? "h-16" : "h-20"
+          }`}
+        >
           {/* LOGO */}
           <div className="flex items-center gap-3">
             <Image
               src="/img/2.png"
               alt="TECHNORA Logo"
-              width={70}
-              height={70}
+              width={60}
+              height={60}
               className="object-contain"
               priority
             />
-            <span className="text-2xl font-bold tracking-tight text-[#660000]" style={{ fontFamily: "'Segoe Print', cursive, sans-serif" }}
->
+
+            <span
+              className="text-2xl tracking-wide text-[#660000]"
+              style={{
+                fontFamily: "'Segoe Print', 'Comic Sans MS', cursive",
+              }}
+            >
               TECHNORA
             </span>
           </div>
 
-          {/* DESKTOP MENU */}
-          <div className="hidden md:flex items-center space-x-8">
-            {["Mission", "What We Do", "Community", "Launch"].map((item) => (
+          {/* DESKTOP LINKS */}
+          <div className="hidden md:flex items-center gap-10">
+            {links.map((link) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase().replace(/ /g, "")}`}
-                className="relative text-gray-700 hover:text-[#dd0000] font-medium transition-colors duration-300"
+                key={link.label}
+                href={link.href}
+                className="group relative text-sm font-semibold uppercase tracking-wider text-gray-800 transition-colors duration-300 hover:text-[#dd0000]"
               >
-                {item}
-                <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-[#dd0000] transition-all duration-300 hover:w-full" />
+                {link.label}
+
+                {/* underline */}
+                <span className="absolute -bottom-2 left-0 h-[2px] w-0 bg-gradient-to-r from-[#660000] to-[#dd0000] transition-all duration-300 group-hover:w-full" />
+
+                {/* glow dot */}
+                <span className="absolute -bottom-3 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-[#dd0000] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </a>
             ))}
           </div>
 
           {/* MOBILE BUTTON */}
           <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-gray-800 hover:text-[#dd0000]"
+            onClick={() => setOpen(!open)}
+            className="md:hidden rounded-lg p-2 text-gray-800 transition hover:bg-gray-100"
           >
-            {isOpen ? <X size={26} /> : <Menu size={26} />}
+            {open ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
-      </div>
+      </nav>
 
       {/* MOBILE MENU */}
-      {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200">
-          <div className="px-4 py-4 space-y-2">
-            {["Mission", "What We Do", "Community", "Launch"].map((item) => (
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-500 ${
+          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="bg-white px-6 py-6 shadow-lg">
+          <div className="flex flex-col gap-4">
+            {links.map((link) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase().replace(/ /g, "")}`}
-                className="block rounded-lg px-3 py-2 text-gray-700 hover:bg-gray-100 hover:text-[#dd0000] transition"
-                onClick={() => setIsOpen(false)}
+                key={link.label}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-wider text-gray-800 transition hover:bg-[#dd0000]/10 hover:text-[#dd0000]"
               >
-                {item}
+                {link.label}
               </a>
             ))}
           </div>
         </div>
-      )}
-    </nav>
+      </div>
+    </header>
   );
 };
 
