@@ -74,7 +74,7 @@ const Features = () => {
       <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-black text-white mb-6">
+          <h2 style={{ fontFamily: "'Segoe Print', cursive, sans-serif" }} className="text-5xl md:text-6xl font-black text-white mb-6">
             What We <span className="text-gradient">Focus On</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-deep-red to-blood-red mx-auto mb-8 opacity-30"></div>
