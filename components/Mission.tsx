@@ -67,7 +67,7 @@ const Mission = () => {
       <div className="relative max-w-7xl mx-auto px-6 sm:px-6 lg:px-8 z-10">
         {/* Section Header */}
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-black text-gradient mb-6">
+          <h2 style={{ fontFamily: "'Segoe Print', cursive, sans-serif" }} className="text-5xl md:text-6xl font-black text-gradient mb-6">
             Our Mission
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-deep-red to-blood-red mx-auto mb-8 opacity-30"></div>
