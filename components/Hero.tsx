@@ -7,15 +7,13 @@ import React from "react";
 import { ArrowRight, Play } from "lucide-react";
 
 const Hero = () => {
-
-    const scrollToLaunch = () => {
+  const scrollToLaunch = () => {
     const section = document.getElementById("launch");
     section?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black text-white">
-      
       {/* BACKGROUND ORBS */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="orb orb-red-deep w-96 h-96 -top-40 -left-40"></div>
@@ -27,7 +25,6 @@ const Hero = () => {
       <div className="absolute inset-0 grid-pattern opacity-15"></div>
 
       <div className="relative max-w-6xl mx-auto px-6 py-28 text-center z-10">
-        
         {/* LAUNCH BADGE */}
         <div className="inline-block mb-10 animate-float cursor-pointer">
           <div
@@ -42,7 +39,7 @@ const Hero = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#dd0000]/60"></span>
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-[#dd0000]"></span>
               </span>
-              Official Launch — June 6, 2026
+              Official Launch — July 7, 2027 - 1
             </p>
           </div>
         </div>
@@ -59,14 +56,13 @@ const Hero = () => {
 
         {/* SUBTITLE */}
         <p className="text-base md:text-lg text-[var(--color-text-light)] max-w-2xl mx-auto mb-12 animate-fadeIn">
-          TECHNORA is a youth-driven tech community helping students and young professionals
-          learn, connect, and confidently enter the tech world through events, mentorship,
-          and real conversations.
+          TECHNORA is a youth-driven tech community helping students and young
+          professionals learn, connect, and confidently enter the tech world
+          through events, mentorship, and real conversations.
         </p>
 
         {/* CTA BUTTONS */}
         <div className="flex flex-col sm:flex-row gap-5 justify-center items-center mb-16">
-          
           <button
             onClick={scrollToLaunch}
             className="
@@ -79,7 +75,8 @@ const Hero = () => {
               animate-glow
             "
             style={{
-              background: "linear-gradient(90deg, var(--color-deep-red), var(--color-blood-red))",
+              background:
+                "linear-gradient(90deg, var(--color-deep-red), var(--color-blood-red))",
               boxShadow: "0 10px 35px rgba(221,0,0,0.2)",
             }}
           >
@@ -100,7 +97,9 @@ const Hero = () => {
             style={{ background: "rgba(0,0,0,1)" }}
           >
             <Play size={18} />
-            <span className="text-[var(--color-text-light)]">First Webinar</span>
+            <span className="text-[var(--color-text-light)]">
+              First Webinar
+            </span>
           </button>
         </div>
 
@@ -133,7 +132,6 @@ const Hero = () => {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );
