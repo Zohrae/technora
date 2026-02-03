@@ -39,10 +39,10 @@ const Navbar = () => {
           {/* LOGO */}
           <div className="flex items-center gap-3">
             <Image
-              src="/img/2.png"
+              src="/img/logo.png"
               alt="TECHNORA Logo"
-              width={60}
-              height={60}
+              width={50}
+              height={50}
               className="object-contain"
               priority
             />
